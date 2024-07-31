@@ -17,9 +17,10 @@ public class AuthenticationService {
 
     private final String baseUrl;
     private final RestTemplate restTemplate = new RestTemplate();
-
-    public AuthenticationService(String url) {
+    private AccountService accountService;
+    public AuthenticationService(String url, AccountService accountService) {
         this.baseUrl = url;
+        this.accountService = accountService;
     }
 
     public AuthenticatedUser login(UserCredentials credentials) {
@@ -29,6 +30,8 @@ public class AuthenticationService {
             ResponseEntity<AuthenticatedUser> response =
                     restTemplate.exchange(baseUrl + "login", HttpMethod.POST, entity, AuthenticatedUser.class);
             user = response.getBody();
+            System.out.println(user);
+            accountService.setAuthToken(user);
         } catch (RestClientResponseException | ResourceAccessException e) {
             BasicLogger.log(e.getMessage());
         }

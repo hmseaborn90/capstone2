@@ -12,7 +12,7 @@ public class App {
 
     private final ConsoleService consoleService = new ConsoleService();
     private final AccountService accountService = new AccountService();
-    private final AuthenticationService authenticationService = new AuthenticationService(API_BASE_URL);
+    private final AuthenticationService authenticationService = new AuthenticationService(API_BASE_URL, accountService);
 
     private AuthenticatedUser currentUser;
 
@@ -88,7 +88,7 @@ public class App {
     }
 
 	private void viewCurrentBalance() {
-        accountService.getBalance(currentUser.getUser().getId());
+        System.out.println(accountService.getBalance(currentUser.getUser().getId()));
 		
 	}
 
