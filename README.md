@@ -121,7 +121,7 @@ Please choose an option:
 
 ## Database schema
 
-![Database schema](./img/Tenmo_erd.png)
+![Database schema](img/Tenmo_erd.png)
 
 ### `tenmo_user` table
 

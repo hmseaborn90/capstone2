@@ -6,6 +6,8 @@ import com.techelevator.tenmo.services.AccountService;
 import com.techelevator.tenmo.services.AuthenticationService;
 import com.techelevator.tenmo.services.ConsoleService;
 
+import java.text.NumberFormat;
+
 public class App {
 
     private static final String API_BASE_URL = "http://localhost:8080/";
@@ -15,6 +17,7 @@ public class App {
     private final AuthenticationService authenticationService = new AuthenticationService(API_BASE_URL, accountService);
 
     private AuthenticatedUser currentUser;
+    private NumberFormat currency = NumberFormat.getCurrencyInstance();
 
     public static void main(String[] args) {
         App app = new App();
@@ -88,8 +91,8 @@ public class App {
     }
 
 	private void viewCurrentBalance() {
-        System.out.println(accountService.getBalance(currentUser.getUser().getId()));
-		
+        System.out.println("Your current account balance is: " + currency.format(accountService.getBalance(currentUser.getUser().getId())));
+
 	}
 
 	private void viewTransferHistory() {
