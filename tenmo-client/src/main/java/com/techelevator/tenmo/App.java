@@ -1,12 +1,14 @@
 package com.techelevator.tenmo;
 
 import com.techelevator.tenmo.model.AuthenticatedUser;
+import com.techelevator.tenmo.model.User;
 import com.techelevator.tenmo.model.UserCredentials;
 import com.techelevator.tenmo.services.AccountService;
 import com.techelevator.tenmo.services.AuthenticationService;
 import com.techelevator.tenmo.services.ConsoleService;
 
 import java.text.NumberFormat;
+import java.util.Arrays;
 
 public class App {
 
@@ -60,6 +62,7 @@ public class App {
     private void handleLogin() {
         UserCredentials credentials = consoleService.promptForCredentials();
         currentUser = authenticationService.login(credentials);
+        accountService.setAuthToken(currentUser);
 
         if (currentUser == null) {
             consoleService.printErrorMessage();
@@ -91,7 +94,7 @@ public class App {
     }
 
 	private void viewCurrentBalance() {
-        System.out.println("Your current account balance is: " + currency.format(accountService.getBalance(currentUser.getUser().getId())));
+        System.out.println("Your current account balance is: " + currency.format(accountService.getBalance()));
 
 	}
 
@@ -106,6 +109,10 @@ public class App {
 	}
 
 	private void sendBucks() {
+        User[] users = accountService.getUsers();
+        for (User u: users){
+            System.out.println(u.getId() + u.getUsername());
+        }
 		// TODO Auto-generated method stub
 		
 	}

@@ -13,7 +13,7 @@ Open endpoints require no Authentication.
 
 * [Login](login.md) : `POST login/`
 * 
-* [Register](login.md) : `POST register/`
+* [Register](register.md) : `POST register/`
 
 ## Endpoints that require Authentication
 

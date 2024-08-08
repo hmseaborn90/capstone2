@@ -4,6 +4,9 @@ import javax.validation.Valid;
 
 import com.techelevator.tenmo.exception.DaoException;
 import com.techelevator.tenmo.model.LoginResponseDto;
+import com.techelevator.tenmo.security.jwt.JWTFilter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -28,6 +31,7 @@ import org.springframework.web.server.ResponseStatusException;
 @RestController
 public class AuthenticationController {
 
+    private static final Logger LOG = LoggerFactory.getLogger(AuthenticationController.class);
     private final TokenProvider tokenProvider;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private final UserDao userDao;
@@ -54,7 +58,7 @@ public class AuthenticationController {
         } catch (DaoException e) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Username or password is incorrect.");
         }
-
+        LOG.info(user.getUsername()+ " User Logged into applicaton");
         return new LoginResponseDto(jwt, user);
     }
 
