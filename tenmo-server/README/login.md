@@ -1,6 +1,6 @@
 # Login
 
-Used to collect a Token for a registered User.
+**Description** : Used to collect a Token for a registered User.
 
 **URL** : `/api/login/`
 
@@ -12,8 +12,8 @@ Used to collect a Token for a registered User.
 
 ```json
 {
-    "username": "[valid email address]",
-    "password": "[password in plain text]"
+    "username": "username",
+    "password": "password in plain text"
 }
 ```
 
@@ -21,8 +21,8 @@ Used to collect a Token for a registered User.
 
 ```json
 {
-    "username": "iloveauth@example.com",
-    "password": "abcd1234"
+    "username": "Harrison",
+    "password": "password"
 }
 ```
 
@@ -34,7 +34,16 @@ Used to collect a Token for a registered User.
 
 ```json
 {
-    "token": "93144b288eb1fdccbe46d6fc0f241a51766ecd3d"
+  "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJoYXJyaXNvbiIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE3MjMzMjcxMzB9.OlgH0V6X2BH2sk57aimsEXhMcP1euSHgnNh45Ri3nkbyEFDTIXczlmOpu-4DG6aqje1NWh0OAKsaaMCjQV9_3w",
+  "user": {
+    "id": 1004,
+    "username": "harrison",
+    "authorities": [
+      {
+        "name": "ROLE_USER"
+      }
+    ]
+  }
 }
 ```
 
@@ -42,14 +51,16 @@ Used to collect a Token for a registered User.
 
 **Condition** : If 'username' and 'password' combination is wrong.
 
-**Code** : `400 BAD REQUEST`
+**Code** : `401 Unauthorized`
 
 **Content** :
 
 ```json
 {
-    "non_field_errors": [
-        "Unable to login with provided credentials."
-    ]
+  "timestamp": "2024-08-09T21:59:38.387+00:00",
+  "status": 401,
+  "error": "Unauthorized",
+  "message": "Cannot invoke \"com.techelevator.tenmo.model.User.isActivated()\" because \"user\" is null",
+  "path": "/login"
 }
 ```

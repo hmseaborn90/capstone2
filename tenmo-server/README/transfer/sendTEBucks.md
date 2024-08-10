@@ -1,19 +1,19 @@
-# Register
+# SendTEBucks
 
-**Description** : Used to collect a Token for a registered User.
+**Description** : Used to send TE Bucks to another user
 
-**URL** : `/api/register/`
+**URL** : `/transfer/send`
 
 **Method** : `POST`
 
-**Auth required** : NO
+**Auth required** : YES
 
 **Data constraints**
 
 ```json
 {
-    "username": "username must be unique",
-    "password": "password in plain text"
+  "toUserId": "integer",
+  "amount": "number"
 }
 ```
 
