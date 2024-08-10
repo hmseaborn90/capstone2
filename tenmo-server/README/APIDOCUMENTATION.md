@@ -9,9 +9,9 @@ http://localhost/8080
 
 Open endpoints require no Authentication.
 
-* [Login](login.md) : `POST /login`
+* [Login](authorization/login.md) : `POST /login`
 * 
-* [Register](register.md) : `POST /register`
+* [Register](authorization/register.md) : `POST /register`
 
 ## Endpoints that require Authentication
 
@@ -30,7 +30,8 @@ Token is provided with the request:
 Endpoints for viewing and manipulating the Transfers that the Authenticated User has permissions to access.
 
 * [Send TE Bucks](transfer/sendTEBucks.md) : `POST /transfer/send`
-* [Create Account](accounts/post.md) : `POST /accounts/`
-* [Show An Account](accounts/pk/get.md) : `GET /api/accounts/:pk/`
-* [Update An Account](accounts/pk/put.md) : `PUT /api/accounts/:pk/`
-* [Delete An Account](accounts/pk/delete.md) : `DELETE /api/accounts/:pk/`
+* [Get List of user Transfers](transfer/getTransfers.md) : `GET /transfers`
+* [Get Transfer Details by ID](transfer/getTransferById.md) : `GET /transfer/{id}`
+* [Request TE Bucks](transfer/requestTEBucks.md) : `POST /transfer/request`
+* [Get List of pending Transfer Requests](transfer/getPendingTransfers.md) : `GET /transfers/pending/`
+* [Approve or Reject Transfer Requests](transfer/putRejectOrApprove.md) : `PUT /transfers/pending/`

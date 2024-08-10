@@ -1,5 +1,7 @@
 # SendTEBucks
 
+---
+
 **Description** : Used to send TE Bucks to another user
 
 **URL** : `/transfer/send`
@@ -13,7 +15,7 @@
 ```json
 {
   "toUserId": "integer",
-  "amount": "number"
+  "amount": "BigDecimal"
 }
 ```
 
@@ -21,21 +23,25 @@
 
 ```json
 {
-  "username": "Harrison",
-  "password": "password"
+  "toUserId": 1003,
+  "amount": 984.00
 }
 ```
 
+---
+
 ## Success Response
 
-**Code** : `201 Created`
+**Code** : `200 OK`
 
 **No Content Returned**
+
+---
 
 
 ## Error Response
 
-**Condition** : If 'username' has already been taken.
+**Condition** : User does not have sufficient funds to complete transfer
 
 **Code** : `400 BAD REQUEST`
 
@@ -43,10 +49,10 @@
 
 ```json
 {
-  "timestamp": "2024-08-09T23:45:05.073+00:00",
+  "timestamp": "2024-08-10T00:30:19.725+00:00",
   "status": 400,
-  "error": "Bad Request",
-  "message": "User already exists.",
-  "path": "/register"
+  "error": "Insufficient Funds",
+  "message": "Account does not have sufficient funds to complete this transfer",
+  "path": "/transfer/send"
 }
 ```
