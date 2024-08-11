@@ -9,4 +9,6 @@ public interface AccountDao {
     BigDecimal getBalance(Integer accountId);
 
     List<User> getUsers(int id);
+
+    int getAccountByUserId(int id);
 }
