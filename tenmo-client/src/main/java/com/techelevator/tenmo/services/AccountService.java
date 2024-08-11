@@ -68,5 +68,6 @@ public class AccountService {
             throw new IllegalStateException("Auth token not set");
         }
         return new HttpEntity<>(headers);
+        //example
     }
 }
