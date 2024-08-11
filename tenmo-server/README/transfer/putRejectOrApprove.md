@@ -4,7 +4,7 @@
 
 **Description** : Used to update the Transfer Status Description 
 
-**URL** : `/transfer/{transfer_id}/status`
+**URL** : `/transferDetail/{transfer_id}/status`
 
 **Method** : `PUT`
 
@@ -12,7 +12,7 @@
 
 **Data constraints**
 
-A transfer can have one of three statuses ["Pending", "Approved", "Rejected"]
+A transferDetail can have one of three statuses ["Pending", "Approved", "Rejected"]
 
 ```json
 {
@@ -47,7 +47,7 @@ A transfer can have one of three statuses ["Pending", "Approved", "Rejected"]
 
 ## Error Response
 
-**Condition** : Invalid Status or insufficient funds to complete transfer request
+**Condition** : Invalid Status or insufficient funds to complete transferDetail request
 
 **Code** : `400 BAD REQUEST`
 
@@ -59,6 +59,6 @@ A transfer can have one of three statuses ["Pending", "Approved", "Rejected"]
   "status": 400,
   "error": "Bad Request",
   "message": "Invalid status or insufficient funds.",
-  "path": "transfer/{transfer_id}/status/"
+  "path": "transferDetail/{transfer_id}/status/"
 }
 ```

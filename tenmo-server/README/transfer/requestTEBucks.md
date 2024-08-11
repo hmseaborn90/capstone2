@@ -2,7 +2,7 @@
 
 **Description** : Used to request TE Bucks from another user
 
-**URL** : `/transfer/request`
+**URL** : `/transferDetail/request`
 
 **Method** : `POST`
 
@@ -55,7 +55,7 @@
   "status": 400,
   "error": "Bad Request",
   "message": "Invalid amount or requester cannot be yourself.",
-  "path": "transfer/request/"
+  "path": "transferDetail/request/"
 }
 ```
 

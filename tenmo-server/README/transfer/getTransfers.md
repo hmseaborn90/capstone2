@@ -2,9 +2,9 @@
 
 ---
 
-**Description** : Used to retrieve a list of transfers sent and recieved by user
+**Description** : Used to retrieve a list of transferDetail sent and recieved by user
 
-**URL** : `/transfers`
+**URL** : `/transferDetail`
 
 **Method** : `GET`
 
@@ -42,7 +42,7 @@
 [//]: # ()
 [//]: # (TODO Figure out error Response possibilities) 
 
-[//]: # (**Condition** : User does not have sufficient funds to complete transfer)
+[//]: # (**Condition** : User does not have sufficient funds to complete transferDetail)
 
 [//]: # ()
 [//]: # (**Code** : `400 BAD REQUEST`)
@@ -61,9 +61,9 @@
 
 [//]: # (  "error": "Insufficient Funds",)
 
-[//]: # (  "message": "Account does not have sufficient funds to complete this transfer",)
+[//]: # (  "message": "Account does not have sufficient funds to complete this transferDetail",)
 
-[//]: # (  "path": "/transfer/send")
+[//]: # (  "path": "/transferDetail/send")
 
 [//]: # (})
 

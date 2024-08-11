@@ -36,9 +36,9 @@ Token is provided with the request:
 
 Endpoints for viewing and manipulating the Transfers that the Authenticated User has permissions to access.
 
-* [Send TE Bucks](transfer/sendTEBucks.md) : `POST /transfer/send`
-* [Get List of user Transfers](transfer/getTransfers.md) : `GET /transfers`
-* [Get Transfer Details by ID](transfer/getTransferById.md) : `GET /transfer/{id}`
-* [Request TE Bucks](transfer/requestTEBucks.md) : `POST /transfer/request`
-* [Get List of pending Transfer Requests](transfer/getPendingTransfers.md) : `GET /transfers/pending/`
-* [Approve or Reject Transfer Requests](transfer/putRejectOrApprove.md) : `PUT /transfer/{transfer_id}/status/`
+* [Send TE Bucks](transferDetail/sendTEBucks.md) : `POST /transferDetail/send`
+* [Get List of user Transfers](transferDetail/getTransfers.md) : `GET /transferDetail`
+* [Get Transfer Details by ID](transferDetail/getTransferById.md) : `GET /transferDetail/{id}`
+* [Request TE Bucks](transferDetail/requestTEBucks.md) : `POST /transferDetail/request`
+* [Get List of pending Transfer Requests](transferDetail/getPendingTransfers.md) : `GET /transferDetail/pending/`
+* [Approve or Reject Transfer Requests](transferDetail/putRejectOrApprove.md) : `PUT /transferDetail/{transfer_id}/status/`

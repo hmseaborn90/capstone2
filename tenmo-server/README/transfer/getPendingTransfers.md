@@ -2,9 +2,9 @@
 
 ---
 
-**Description** : Used to retrieve a list of pending transfers requests for user
+**Description** : Used to retrieve a list of pending transferDetail requests for user
 
-**URL** : `/transfers/pending`
+**URL** : `/transferDetail/pending`
 
 **Method** : `GET`
 
@@ -50,6 +50,6 @@
   "status": 401,
   "error": "Unauthorized",
   "message": "Token is missing or invalid.",
-  "path": "/api/transfers/pending/"
+  "path": "/api/transferDetail/pending/"
 }
 ```

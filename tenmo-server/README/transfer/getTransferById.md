@@ -2,9 +2,9 @@
 
 ---
 
-**Description** : Used to retrieve transfer details by transfer_id
+**Description** : Used to retrieve transferDetail details by transfer_id
 
-**URL** : `/transfer/{id}`
+**URL** : `/transferDetail/{id}`
 
 **Method** : `GET`
 
@@ -12,7 +12,7 @@
 
 **No Body Required**
 
-**URL Params Required** : transfer_id (integer): Id of transfer to retrieve
+**URL Params Required** : transfer_id (integer): Id of transferDetail to retrieve
 
 ---
 
@@ -46,6 +46,6 @@
   "status": 404,
   "error": "Not Found",
   "message": "Transfer not found.",
-  "path": "transfer/{transfer_id}/"
+  "path": "transferDetail/{transfer_id}/"
 }
 ```

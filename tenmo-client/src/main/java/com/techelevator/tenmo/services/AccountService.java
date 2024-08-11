@@ -25,8 +25,9 @@ public class AccountService {
         if (currentUser != null && currentUser.getToken() != null) {
 
             this.authToken = currentUser.getToken();
+
         } else {
-            throw new IllegalArgumentException("Invalid AuthenticatedUser or token");
+            throw new IllegalArgumentException("Invalid Authenticated User or token");
         }
     }
     public BigDecimal getBalance() {

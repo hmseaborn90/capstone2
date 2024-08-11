@@ -95,7 +95,6 @@ public class App {
 
 	private void viewCurrentBalance() {
         System.out.println("Your current account balance is: " + currency.format(accountService.getBalance()));
-
 	}
 
 	private void viewTransferHistory() {
