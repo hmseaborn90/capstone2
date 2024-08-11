@@ -12,7 +12,7 @@
 
 ```json
 {
-  "fromUserId": "integer",
+  "account_from": "integer",
   "amount": "numeric"
 }
 ```
@@ -21,48 +21,41 @@
 
 ```json
 {
-  "fromUserId": 1002,
+  "account_from": 1002,
   "amount": 399.44
 }
 ```
 
 ## Success Response
 
-**Code** : `200 OK`
+**Code** : `201 Created`
 
-**No Content Returned**
+**Content Example**
+
+```json
+{
+  "account_from": 1002,
+  "amount": 399.44,
+  "transfer_status": "Pending"
+}
+```
 
 
 ## Error Response
-TODO Figure out error Response possibilities
 
-[//]: # ()
+**Condition** : Invalid amount or requester cannot be yourself
 
+**Code** : `400 BAD REQUEST`
 
-[//]: # (**Condition** : User does not have sufficient funds to complete transfer)
+**Content** :
 
-[//]: # ()
-[//]: # (**Code** : `400 BAD REQUEST`)
-
-[//]: # ()
-[//]: # (**Content** :)
-
-[//]: # ()
-[//]: # (```json)
-
-[//]: # ({)
-
-[//]: # (  "timestamp": "2024-08-10T00:30:19.725+00:00",)
-
-[//]: # (  "status": 400,)
-
-[//]: # (  "error": "Insufficient Funds",)
-
-[//]: # (  "message": "Account does not have sufficient funds to complete this transfer",)
-
-[//]: # (  "path": "/transfer/send")
-
-[//]: # (})
-
-[//]: # (```)
+```json
+{
+  "timestamp": "2024-08-10T00:15:05.073+00:00",
+  "status": 400,
+  "error": "Bad Request",
+  "message": "Invalid amount or requester cannot be yourself.",
+  "path": "transfer/request/"
+}
+```
 

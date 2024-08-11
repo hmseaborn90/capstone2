@@ -1,17 +1,22 @@
 # APIDocs
 
+---
 ## API BASE_URL 
 ** BASE_URL is the URL that will prefix all endpoints**
 
 http://localhost/8080
+
+---
 
 ## Open Endpoints
 
 Open endpoints require no Authentication.
 
 * [Login](authorization/login.md) : `POST /login`
-* 
+
 * [Register](authorization/register.md) : `POST /register`
+
+---
 
 ## Endpoints that require Authentication
 
@@ -23,7 +28,9 @@ request `Authorization: Bearer {token}` A Token can be acquired from the Login v
 Each endpoint manipulates or displays information related to the User whose
 Token is provided with the request:
 
-* [Get account Balance](account/getBalance) : `GET /account/balance`
+* [Get account Balance](account/getBalance.md) : `GET /account/balance`
+
+---
 
 ### Transfer related
 
@@ -34,4 +41,4 @@ Endpoints for viewing and manipulating the Transfers that the Authenticated User
 * [Get Transfer Details by ID](transfer/getTransferById.md) : `GET /transfer/{id}`
 * [Request TE Bucks](transfer/requestTEBucks.md) : `POST /transfer/request`
 * [Get List of pending Transfer Requests](transfer/getPendingTransfers.md) : `GET /transfers/pending/`
-* [Approve or Reject Transfer Requests](transfer/putRejectOrApprove.md) : `PUT /transfers/pending/`
+* [Approve or Reject Transfer Requests](transfer/putRejectOrApprove.md) : `PUT /transfer/{transfer_id}/status/`

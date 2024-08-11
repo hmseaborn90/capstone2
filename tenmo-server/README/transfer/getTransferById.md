@@ -12,7 +12,7 @@
 
 **No Body Required**
 
-**URL Params Required** : id (integer): Id of transfer to retrieve
+**URL Params Required** : transfer_id (integer): Id of transfer to retrieve
 
 ---
 
@@ -23,43 +23,29 @@
 **Content example**
 ```json
 {
-  "transferId": "2001 (integer)",
-  "fromUser": "Harrison (string)",
-  "toUser": "Anya (string)",
-  "type": "Send (string)",
-  "status": "Approved (string)",
+  "transfer_id": "2001 (integer)",
+  "account_from": "Harrison (string)",
+  "account_to": "Anya (string)",
+  "transfer_type": "Send (string)",
+  "transfer_status": "Approved (string)",
   "amount": "543.33 (numberic)"
 }
 ```
 ---
 ## Error Response
-TODO Figure out error Response possibilities
-[//]: # ()
 
+**Condition** : If Transfer ID does not exist
 
-[//]: # (**Condition** : User does not have sufficient funds to complete transfer)
+**Code** : `404 Not Found`
 
-[//]: # ()
-[//]: # (**Code** : `400 BAD REQUEST`)
+**Content** :
 
-[//]: # ()
-[//]: # (**Content** :)
-
-[//]: # ()
-[//]: # (```json)
-
-[//]: # ({)
-
-[//]: # (  "timestamp": "2024-08-10T00:30:19.725+00:00",)
-
-[//]: # (  "status": 400,)
-
-[//]: # (  "error": "Insufficient Funds",)
-
-[//]: # (  "message": "Account does not have sufficient funds to complete this transfer",)
-
-[//]: # (  "path": "/transfer/send")
-
-[//]: # (})
-
-[//]: # (```)
+```json
+{
+  "timestamp": "2024-08-10T00:10:05.073+00:00",
+  "status": 404,
+  "error": "Not Found",
+  "message": "Transfer not found.",
+  "path": "transfer/{transfer_id}/"
+}
+```

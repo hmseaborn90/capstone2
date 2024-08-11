@@ -2,7 +2,7 @@
 
 **Description** : Used to collect a Token for a registered User.
 
-**URL** : `/api/login/`
+**URL** : `/login/`
 
 **Method** : `POST`
 
