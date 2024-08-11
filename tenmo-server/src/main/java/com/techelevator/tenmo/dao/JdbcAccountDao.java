@@ -22,11 +22,11 @@ public class JdbcAccountDao implements AccountDao{
     }
 
     @Override
-    public BigDecimal getBalance(Integer accountId) {
+    public BigDecimal getBalance(Integer userId) {
         BigDecimal balance = null;
         String sql = "SELECT balance FROM account WHERE user_id = ?";
         try {
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, accountId);
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
             if(results.next()){
                 balance = results.getBigDecimal("balance");
             }

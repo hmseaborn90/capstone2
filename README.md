@@ -17,32 +17,32 @@ Congratulations—you've landed a job with TEnmo, whose product is an online pay
    1. Logging in returns an Authentication Token. I need to include this token with all my subsequent interactions with the system outside of registering and logging in.
    2. The ability to log in has been provided in your starter code.
 3. As an authenticated user of the system, I need to be able to see my Account Balance.
-4. As an authenticated user of the system, I need to be able to *send* a transfer of a specific amount of TE Bucks to a registered user.
+4. As an authenticated user of the system, I need to be able to *send* a transferDetail of a specific amount of TE Bucks to a registered user.
    1. I should be able to choose from a list of users to send TE Bucks to.
    2. I must not be allowed to send money to myself.
-   3. A transfer includes the User IDs of the from and to users and the amount of TE Bucks.
-   4. The receiver's account balance is increased by the amount of the transfer.
-   5. The sender's account balance is decreased by the amount of the transfer.
+   3. A transferDetail includes the User IDs of the from and to users and the amount of TE Bucks.
+   4. The receiver's account balance is increased by the amount of the transferDetail.
+   5. The sender's account balance is decreased by the amount of the transferDetail.
    6. I can't send more TE Bucks than I have in my account.
    7. I can't send a zero or negative amount.
    8. A Sending Transfer has an initial status of *Approved*.
-5. As an authenticated user of the system, I need to be able to see transfers I have sent or received.
-6. As an authenticated user of the system, I need to be able to retrieve the details of any transfer based upon the transfer ID.
-7. As an authenticated user of the system, I need to be able to *request* a transfer of a specific amount of TE Bucks from another registered user.
+5. As an authenticated user of the system, I need to be able to see transferDetail I have sent or received.
+6. As an authenticated user of the system, I need to be able to retrieve the details of any transferDetail based upon the transferDetail ID.
+7. As an authenticated user of the system, I need to be able to *request* a transferDetail of a specific amount of TE Bucks from another registered user.
    1. I should be able to choose from a list of users to request TE Bucks from.
    2. I must not be allowed to request money from myself.
    3. I can't request a zero or negative amount.
-   4. A transfer includes the User IDs of the from and to users and the amount of TE Bucks.
+   4. A transferDetail includes the User IDs of the from and to users and the amount of TE Bucks.
    5. A Request Transfer has an initial status of *Pending*.
    6. No account balance changes until the request is approved.
-   7. The transfer request should appear in both users' list of transfers (use case #5).
-8. As an authenticated user of the system, I need to be able to see my *Pending* transfers.
+   7. The transferDetail request should appear in both users' list of transferDetail (use case #5).
+8. As an authenticated user of the system, I need to be able to see my *Pending* transferDetail.
 9. As an authenticated user of the system, I need to be able to either approve or reject a Request Transfer.
    1. I can't "approve" a given Request Transfer for more TE Bucks than I have in my account.
    2. The Request Transfer status is *Approved* if I approve, or *Rejected* if I reject the request.
-   3. If the transfer is approved, the requester's account balance is increased by the amount of the request.
-   4. If the transfer is approved, the requestee's account balance is decreased by the amount of the request.
-   5. If the transfer is rejected, no account balance changes.
+   3. If the transferDetail is approved, the requester's account balance is increased by the amount of the request.
+   4. If the transferDetail is approved, the requestee's account balance is decreased by the amount of the request.
+   5. If the transferDetail is rejected, no account balance changes.
 
 ## Sample screens
 
@@ -65,7 +65,7 @@ Enter ID of user you are sending to (0 to cancel):
 Enter amount:
 ```
 
-### Use case 5: View transfers
+### Use case 5: View transferDetail
 ```
 -------------------------------------------
 Transfers
@@ -74,7 +74,7 @@ ID          From/To                 Amount
 23          From: Bernice          $ 903.14
 79          To:    Larry           $  12.55
 ---------
-Please enter transfer ID to view details (0 to cancel): "
+Please enter transferDetail ID to view details (0 to cancel): "
 ```
 
 ### Use case 6: Transfer details
@@ -113,10 +113,10 @@ ID          To                     Amount
 88          Bernice                $ 142.56
 147         Larry                  $  10.17
 ---------
-Please enter transfer ID to approve/reject (0 to cancel): "
+Please enter transferDetail ID to approve/reject (0 to cancel): "
 ```
 
-### Use case 9: Approve or reject pending transfer
+### Use case 9: Approve or reject pending transferDetail
 ```
 1: Approve
 2: Reject
@@ -152,51 +152,51 @@ Stores the accounts of users in the system.
 
 ### `transfer_type` table
 
-Stores the types of transfers that are possible.
+Stores the types of transferDetail that are possible.
 
 | Field                | Description                             |
 | -------------------- | --------------------------------------- |
-| `transfer_type_id`   | Unique identifier of the transfer type  |
-| `transfer_type_desc` | String description of the transfer type |
+| `transfer_type_id`   | Unique identifier of the transferDetail type  |
+| `transfer_type_desc` | String description of the transferDetail type |
 
-There are two types of transfers:
+There are two types of transferDetail:
 
 | `transfer_type_id` | `transfer_type_desc` | Purpose                                                                |
 | ------------------ | -------------------- | ---------------------------------------------------------------------- |
-| 1                  | Request              | Identifies transfer where a user requests money from another user      |
-| 2                  | Send                 | Identifies transfer where a user sends money to another user           |
+| 1                  | Request              | Identifies transferDetail where a user requests money from another user      |
+| 2                  | Send                 | Identifies transferDetail where a user sends money to another user           |
 
 ### `transfer_status` table
 
-Stores the statuses of transfers that are possible.
+Stores the statuses of transferDetail that are possible.
 
 | Field                  | Description                               |
 | ---------------------- | ----------------------------------------- |
-| `transfer_status_id`   | Unique identifier of the transfer status  |
-| `transfer_status_desc` | String description of the transfer status |
+| `transfer_status_id`   | Unique identifier of the transferDetail status  |
+| `transfer_status_desc` | String description of the transferDetail status |
 
-There are three statuses of transfers:
+There are three statuses of transferDetail:
 
 | `transfer_status_id` | `transfer_status_desc` |Purpose                                                                                 |
 | -------------------- | -------------------- | ---------------------------------------------------------------------------------------  |
-| 1                    | Pending                | Identifies transfer that hasn't occurred yet and requires approval from the other user |
-| 2                    | Approved               | Identifies transfer that has been approved and occurred                                |
-| 3                    | Rejected               | Identifies transfer that wasn't approved                                               |
+| 1                    | Pending                | Identifies transferDetail that hasn't occurred yet and requires approval from the other user |
+| 2                    | Approved               | Identifies transferDetail that has been approved and occurred                                |
+| 3                    | Rejected               | Identifies transferDetail that wasn't approved                                               |
 
-### `transfer` table
+### `transferDetail` table
 
-Stores the transfers of TE bucks.
+Stores the transferDetail of TE bucks.
 
 | Field                | Description                                                                                     |
 | -------------------- | ----------------------------------------------------------------------------------------------- |
-| `transfer_id`        | Unique identifier of the transfer                                                               |
-| `transfer_type_id`   | Foreign key to the `transfer_types` table; identifies type of transfer                          |
-| `transfer_status_id` | Foreign key to the `transfer_statuses` table; identifies status of transfer                     |
+| `transfer_id`        | Unique identifier of the transferDetail                                                               |
+| `transfer_type_id`   | Foreign key to the `transfer_types` table; identifies type of transferDetail                          |
+| `transfer_status_id` | Foreign key to the `transfer_statuses` table; identifies status of transferDetail                     |
 | `account_from`       | Foreign key to the `accounts` table; identifies the account that the funds are being taken from |
 | `account_to`         | Foreign key to the `accounts` table; identifies the account that the funds are going to         |
-| `amount`             | Amount of the transfer                                                                          |
+| `amount`             | Amount of the transferDetail                                                                          |
 
-> Note: there are two check constraints in the DDL that creates the `transfer` table. Be sure to take a look at `tenmo.sql` to understand these constraints.
+> Note: there are two check constraints in the DDL that creates the `transferDetail` table. Be sure to take a look at `tenmo.sql` to understand these constraints.
 
 ## How to set up the database
 
