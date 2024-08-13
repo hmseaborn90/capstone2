@@ -6,9 +6,9 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public interface AccountDao {
-    BigDecimal getBalance(Integer accountId);
+    BigDecimal getBalance(String username);
 
-    List<User> getUsers(int id);
+    List<User> getUsers(String username);
 
     int getAccountByUserId(int id);
 }

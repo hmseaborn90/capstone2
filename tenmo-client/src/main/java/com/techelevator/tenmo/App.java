@@ -7,6 +7,7 @@ import com.techelevator.tenmo.services.AccountService;
 import com.techelevator.tenmo.services.AuthenticationService;
 import com.techelevator.tenmo.services.ConsoleService;
 
+import java.sql.SQLOutput;
 import java.text.NumberFormat;
 import java.util.Arrays;
 
@@ -109,9 +110,15 @@ public class App {
 
 	private void sendBucks() {
         User[] users = accountService.getUsers();
-        for (User u: users){
-            System.out.println(u.getId() + u.getUsername());
+        System.out.println("-".repeat(22));
+        System.out.println("Users");
+        System.out.printf(" %-10s%10s %n", "ID", "Username");
+        System.out.println("-".repeat(22));
+        for (User user: users){
+            System.out.printf(" %-10s%10s %n",user.getId(), user.getUsername());
+//            System.out.println();
         }
+        System.out.println("-".repeat(10));
 		// TODO Auto-generated method stub
 		
 	}

@@ -14,6 +14,11 @@ public class TransferDetail {
     public TransferDetail() {
     }
 
+    public TransferDetail(int tranferId, String accountFrom, BigDecimal amount) {
+        this.tranferId = tranferId;
+        this.accountFrom = accountFrom;
+        this.amount = amount;
+    }
 
     public TransferDetail(int tranferId, String transferType, String transferStatus, String accountFrom, String accountTo, BigDecimal amount) {
         this.tranferId = tranferId;

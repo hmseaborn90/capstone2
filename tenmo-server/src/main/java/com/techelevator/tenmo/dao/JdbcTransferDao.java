@@ -3,6 +3,7 @@ package com.techelevator.tenmo.dao;
 import com.techelevator.tenmo.exception.DaoException;
 import com.techelevator.tenmo.model.Transfer;
 import com.techelevator.tenmo.model.TransferDetail;
+import com.techelevator.tenmo.model.TransferPendingDto;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -68,6 +69,8 @@ public class JdbcTransferDao implements TransferDao{
         return transferDetail;
     }
 
+
+
     @Override
     public TransferDetail sendRequest(int accountFrom, int accountTo, BigDecimal amount) {
         TransferDetail newRequest;
@@ -85,12 +88,45 @@ public class JdbcTransferDao implements TransferDao{
         return newRequest;
     }
 
+    @Override
+    public List<TransferPendingDto> getPendingTransfers(int userId) {
+        List<TransferPendingDto> pendingRequests = new ArrayList<>();
+        String sql = "SELECT transfer_id, afu.username as account_from, amount\n" +
+                "FROM transfer AS t\n" +
+                "JOIN account af ON t.account_from = af.account_id\n" +
+                "JOIN tenmo_user afu ON af.user_id = afu.user_id\n" +
+                "JOIN transfer_status AS ts\n" +
+                "    ON t.transfer_status_id = ts.transfer_status_id\n" +
+                "WHERE ts.transfer_status_desc = 'Pending'\n" +
+                "AND account_to = ?;";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+            while (results.next()) {
+                TransferPendingDto pendingRequest = mapRowToTransferPendingDto(results);
+                pendingRequests.add(pendingRequest);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+        return pendingRequests;
+    }
+
 
     private Transfer mapRowToTransfer(SqlRowSet rs) {
         Transfer transfer = new Transfer();
+
         transfer.setTranferId(rs.getInt("transfer_id"));
         transfer.setAccountFrom(rs.getString("account_from"));
         transfer.setAccountTo(rs.getString("account_to"));
+        transfer.setAmount(rs.getBigDecimal("amount"));
+
+        return transfer;
+    }
+    private TransferPendingDto mapRowToTransferPendingDto(SqlRowSet rs) {
+        TransferPendingDto transfer = new TransferPendingDto();
+
+        transfer.setTransferId(rs.getInt("transfer_id"));
+        transfer.setAccountFrom(rs.getString("account_from"));
         transfer.setAmount(rs.getBigDecimal("amount"));
 
         return transfer;

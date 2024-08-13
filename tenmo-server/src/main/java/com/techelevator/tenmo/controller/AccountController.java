@@ -30,15 +30,15 @@ public class AccountController {
     @PreAuthorize("hasRole('USER')")
     public BigDecimal getBalance(Principal principal){
         System.out.println(principal.toString());
-        User user = userDao.getUserByUsername(principal.getName());
-        return accountDao.getBalance(user.getId());
+//        User user = userDao.getUserByUsername(principal.getName());
+        return accountDao.getBalance(principal.getName());
 
     }
 
     @GetMapping("users")
     public List<User> getUsersNeCurrent(Principal principal) {
-        User user = userDao.getUserByUsername(principal.getName());
-        return accountDao.getUsers(user.getId());
+//        User user = userDao.getUserByUsername(principal.getName());
+        return accountDao.getUsers(principal.getName());
     }
 
 
